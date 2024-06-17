@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Weather Forecasting</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Use to add degree sign in temp-->
+    <string name="temp">39<span>&#176;</span></string>
+</resources>

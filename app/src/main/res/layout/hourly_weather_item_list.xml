@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+
+    <TextView
+        android:id="@+id/hourly_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2:30 pm"
+        android:textColor="@color/gray"
+        android:textSize="20sp"
+        android:layout_margin="6dp"
+        />
+    <TextView
+        android:id="@+id/hourly_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_margin="6dp"
+        android:drawablePadding="5dp"
+        android:layout_below="@+id/hourly_time"
+        />
+    <TextView
+        android:id="@+id/hourly_rain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="26%"
+        android:textColor="@color/gray"
+        android:textSize="20sp"
+        android:layout_margin="6dp"
+        android:drawablePadding="5dp"
+        android:layout_below="@+id/hourly_temp"
+        />
+</RelativeLayout>
