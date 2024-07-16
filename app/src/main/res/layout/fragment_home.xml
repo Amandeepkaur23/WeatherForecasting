@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment"
     android:background="#D8EDF6"
+    android:id="@+id/main_layout"
     >
 
     <TextView
@@ -26,7 +27,6 @@
         android:layout_alignParentRight="true"
         android:src="@drawable/ic_add"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#D8EDF6"
         />
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_one"
@@ -71,6 +71,16 @@
                 android:textSize="45sp"
                 android:layout_below="@+id/date"
                 />
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:lottie_rawRes="@raw/sun"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                android:layout_below="@+id/location"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="100dp"/>
             <TextView
                 android:id="@+id/hows_weather"
                 android:layout_width="wrap_content"
@@ -87,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/temp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 tools:listitem="@layout/hourly_weather_item_list"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
@@ -123,7 +133,8 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
 
 
 

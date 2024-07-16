@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherforecasting.databinding.HourlyWeatherItemListBinding
-import com.example.weatherforecasting.models.HourlyWeatherData
+import com.example.weatherforecasting.models.HWeatherData
+import com.example.weatherforecasting.models.Hourly
 
-class HourlyWeatherAdapter(var hourlyWeatherData: List<HourlyWeatherData>): RecyclerView.Adapter<HourlyWeatherAdapter.HourlyViewModel>() {
+class HourlyWeatherAdapter(private var hWeatherData: HWeatherData): RecyclerView.Adapter<HourlyWeatherAdapter.HourlyViewModel>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HourlyViewModel {
         val binding = HourlyWeatherItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -14,22 +15,30 @@ class HourlyWeatherAdapter(var hourlyWeatherData: List<HourlyWeatherData>): Recy
     }
 
     override fun getItemCount(): Int {
-        return hourlyWeatherData.size
+        return hWeatherData.hourly.rain.size
     }
 
     override fun onBindViewHolder(holder: HourlyViewModel, position: Int) {
-        val hourlyData = hourlyWeatherData[position]
-        hourlyData.let {
-            holder.bind(it)
-        }
+        val hourlyData = Hourly(
+            listOf(hWeatherData.hourly.rain[position]),
+            listOf(hWeatherData.hourly.temperature_2m[position]),
+            listOf(hWeatherData.hourly.time[position]),
+        )
+       holder.bind(hourlyData)
+    }
+
+    fun updateData(newData: HWeatherData) {
+        hWeatherData = newData
+        notifyDataSetChanged()
     }
 
     class HourlyViewModel(private val binding: HourlyWeatherItemListBinding):
         RecyclerView.ViewHolder(binding.root){
-        fun bind(hourlyWeatherData: HourlyWeatherData){
-            binding.hourlyTime.text = hourlyWeatherData.time.toString()
-            binding.hourlyTemp.text = hourlyWeatherData.temp.toString()
-            binding.hourlyRain.text = hourlyWeatherData.rain.toString()
+        fun bind(hourlyData: Hourly){
+            binding.hourlyTime.text = hourlyData.time.joinToString(" ")
+            binding.hourlyTemp.text = hourlyData.temperature_2m.joinToString(" ")
+            val rainData = "${hourlyData.rain.joinToString(" ")}mm"
+            binding.hourlyRain.text = rainData
         }
     }
 }
